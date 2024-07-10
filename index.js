@@ -1,9 +1,3 @@
-
-
-
-
-
-
 let gameseq = [];
 let userseq = [];
 let started = false;
@@ -42,9 +36,9 @@ function levelUp() {
     userseq = []; 
 
     let randomIdx = Math.floor(Math.random() * btns.length);
-    let randomcolor = btns[randomIdx];
-    let ranbtn = document.querySelector(`.${randomcolor}`);
-    gameseq.push(randomcolor);
+    let randomColor = btns[randomIdx];
+    let ranbtn = document.querySelector(`.${randomColor}`);
+    gameseq.push(randomColor);
 
     btnsplash(ranbtn);
 }
@@ -57,7 +51,13 @@ function checkAns() {
             setTimeout(levelUp, 1000);
         }
     } else {
-        h2.innerText = "Game over: Press any key to start";
+        h2.innerHTML = `Game over: Your score was <b>${level}</b><br>Press any key to start`;
+        document.querySelector("body").style.backgroundColor = "red";
+
+        setTimeout(function() {
+            document.querySelector("body").style.backgroundColor = "white";
+        }, 150);
+
         started = false;
     }
 }
